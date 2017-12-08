@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "## ui.R ##\n\nlibrary(shiny)\nlibrary(shinydashboard)\nlibrary(ggplot2)\n\ndashboardPage(\n        dashboardHeader(title = \"SaniPath Dashboard\"),\n        dashboardSidebar(sidebarMenu(\n                menuItem(\"Overview\", tabName = \"overview\", icon = icon(\"dashboard\")),\n                menuItem(\"Samples\", tabName = \"tabcol\", icon = icon(\"asterisk\")),\n                menuItem(\"Lab\", tabName = \"tablab\", icon = icon(\"asterisk\"))\n        )\n        ),\n        dashboardBody(\n                tabItems(\n                        # Tab 1 content\n                        tabItem(tabName = \"overview\",\n                                h2(\"Overview\"),\n                                fluidRow(\n                                        box(\n                                                title = \"Histogram\", status = \"primary\", solidHeader = TRUE,\n                                                collapsible = FALSE,\n                                                plotOutput(\"hist\", height = 250)\n                                        ),\n                                        \n                                        box(\n                                                title = \"Deployment\", status = \"info\", solidHeader = TRUE,\n                                                radioButtons(\"deployments\", \"Deployments\",\n                                                             choices = c(\"Cambodia\" = \"1\",\n                                                                         \"Banglasdesh\" = \"2\"),\n                                                             selected = \"1\")\n                                                )\n                                ),\n                                fluidRow(\n                                        box(\n                                                title = \"Slider\", status = \"warning\", solidHeader = TRUE,\n                                                \"Box content here\", br(), \"More box content\",\n                                                sliderInput(\"slider\", \"Slider input:\", 1, 100, 50)\n                                        ),\n                                        \n                                        box(\n                                                title = \"Histogram\", status = \"warning\", solidHeader = TRUE,\n                                                collapsible = FALSE,\n                                                plotOutput(\"plot3\", height = 250)\n                                        )\n                                        )\n                                ),\n                        \n                        # Tab 2 content\n                        tabItem(tabName = \"tabcol\",\n                                h2(\"Here is the sample content\")\n                                ),\n                        \n                        # Tab 3 content\n                        tabItem(tabName = \"tablab\",\n                                h2(\"Here is the lab content\")\n                                )\n        ))\n)\n\n",
+    "created" : 1512750515334.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "825135544",
+    "id" : "35720E5A",
+    "lastKnownWriteTime" : 1512750898,
+    "last_content_update" : 1512750898636,
+    "path" : "~/Documents/R/dashboard/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
