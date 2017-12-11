@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "## server.R ##\n\ndata_col <- read.csv(\"data/data_col.csv\", header=T, sep = \",\")\n\nserver <- function(input, output) {\n        \n        output$plot3 <- renderPlot(\n                hist(rnorm(input$slider))\n        )\n        \n        output$hist <- renderPlot({\n                ggplot(data_col[data_col$deployment== input$deployments, ], aes(x=col_sample_type)) +\n                        geom_histogram()\n        })\n}",
+    "created" : 1513003349551.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1812603845",
+    "id" : "8141D415",
+    "lastKnownWriteTime" : 1513001685,
+    "last_content_update" : 1513001685,
+    "path" : "H:/GitHub/dashboard/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

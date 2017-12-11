@@ -18,32 +18,27 @@ dashboardPage(
                         tabItem(tabName = "overview",
                                 h2("Overview"),
                                 fluidRow(
-                                        box(
-                                                title = "Histogram", status = "primary", solidHeader = TRUE,
-                                                collapsible = FALSE,
-                                                plotOutput("hist", height = 250)
+                                        box(title = "Deployment", status = "info", solidHeader = TRUE, 
+                                            radioButtons("deployments", "Deployments",
+                                                         choices = c("Cambodia" = "1",
+                                                                     "Banglasdesh" = "2"),
+                                                         selected = "1")
+                                            ),
+                                        box(title = "Histogram", status = "primary", solidHeader = TRUE,
+                                            collapsible = FALSE,
+                                            plotOutput("hist", height = 250)
+                                            )
                                         ),
-                                        
-                                        box(
-                                                title = "Deployment", status = "info", solidHeader = TRUE,
-                                                radioButtons("deployments", "Deployments",
-                                                             choices = c("Cambodia" = "1",
-                                                                         "Banglasdesh" = "2"),
-                                                             selected = "1")
-                                                )
-                                ),
                                 fluidRow(
-                                        box(
-                                                title = "Slider", status = "warning", solidHeader = TRUE,
-                                                "Box content here", br(), "More box content",
-                                                sliderInput("slider", "Slider input:", 1, 100, 50)
-                                        ),
+                                        box(title = "Slider", status = "warning", solidHeader = TRUE,
+                                            "Box content here", br(), "More box content",
+                                            sliderInput("slider", "Slider input:", 1, 100, 50)
+                                            ),
                                         
-                                        box(
-                                                title = "Histogram", status = "warning", solidHeader = TRUE,
-                                                collapsible = FALSE,
-                                                plotOutput("plot3", height = 250)
-                                        )
+                                        box(title = "Histogram", status = "warning", solidHeader = TRUE,
+                                            collapsible = FALSE,
+                                            plotOutput("plot3", height = 250)
+                                            )
                                         )
                                 ),
                         
