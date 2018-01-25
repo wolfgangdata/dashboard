@@ -3,6 +3,7 @@
 library(shiny)
 library(shinydashboard)
 library(ggplot2)
+library(plotly)
 
 dashboardPage(
         dashboardHeader(title = "SaniPath Dashboard"),
@@ -20,13 +21,11 @@ dashboardPage(
                                 fluidRow(
                                         box(title = "Deployment", status = "info", solidHeader = TRUE, 
                                             radioButtons("deployments", "Deployments",
-                                                         choices = c("Cambodia" = "1",
-                                                                     "Banglasdesh" = "2"),
-                                                         selected = "1")
+                                                         choices = "")
                                             ),
                                         box(title = "Histogram", status = "primary", solidHeader = TRUE,
                                             collapsible = FALSE,
-                                            plotOutput("hist", height = 250)
+                                            plotlyOutput("hist", height = 250)
                                             )
                                         ),
                                 fluidRow(
@@ -44,8 +43,20 @@ dashboardPage(
                         
                         # Tab 2 content
                         tabItem(tabName = "tabcol",
-                                h2("Here is the sample content")
-                                ),
+                                h2("Here is the sample content"),
+                                fluidRow(
+                                        box(title = "Test Pie", status = "info", solidHeader = TRUE,
+                                            "Percentage of samples collected per deployment",
+                                            plotlyOutput("testpie", height = 250)
+                                        ),
+                                        box(title = "Table", status = "primary", solidHeader = FALSE,
+                                            collapsible = FALSE,
+                                            radioButtons("deployments1", "Deployments",
+                                                         choices = ""),
+                                            tableOutput("table")
+                                        )
+                                
+                                )),
                         
                         # Tab 3 content
                         tabItem(tabName = "tablab",

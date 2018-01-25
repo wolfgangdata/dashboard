@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "## server.R ##\n\nlibrary(dplyr)\n\n# data_col <- read.csv(\"data/data_col.csv\", header=T, sep = \",\")\ndata_col <- read.csv(\"data/merged_col_01_02.csv\", header=T, sep = \",\")\nmeta_deploy <- read.csv(\"data/meta_deployments.csv\", header=T, sep = \",\", stringsAsFactors = F)\nmeta_col <- read.csv(\"data/meta_sampleID.csv\", header=T, sep = \",\", stringsAsFactors = F)\n\n# rename deployments\ndata_col$deployment_name[data_col$deployment == \"1\"] <- meta_deploy$Country[meta_deploy$ID == \"1\"]\ndata_col$deployment_name[data_col$deployment == \"2\"] <- meta_deploy$Country[meta_deploy$ID == \"2\"]\n\n# add sample names and variables\ndata_col <- left_join(data_col, meta_col, by = c(\"col_sample_type\" = \"ID\"))\n\ndeployments <- sort(unique(as.character(data_col$deployment_name)))\ndeployments1 <- sort(unique(as.character(data_col$deployment_name)))\n\n\n\nserver <- function(input, output, session) {\n        \n        session$onSessionEnded(function() {\n                stopApp()\n        })\n        \n        data_col_depl <- data.frame(table(data_col$deployment))\n        data_col_depl$Var1 <- as.numeric(as.character(data_col_depl$Var1))\n        data_col_depl <- left_join(data_col_depl, meta_deploy[, 1:2], by = c(\"Var1\" = \"ID\"))\n        \n        observe({\n                updateRadioButtons(session, \"deployments\", choices=deployments)\n        })\n        \n        observe({\n                updateRadioButtons(session, \"deployments1\", choices=deployments)\n        })\n        \n        output$plot3 <- renderPlot(\n                hist(rnorm(input$slider))\n        )\n        \n        output$hist <- renderPlotly({\n                \n                p <- count(data_col[data_col$deployment_name == input$deployments, ], col_sample_type) %>%\n                plot_ly(x = ~col_sample_type, y = ~n, type = 'bar')\n                \n                # p <- ggplot(data_col[data_col$deployment == input$deployments, ], aes(x=as.factor(col_sample_type))) +\n                #         geom_bar(stat=\"count\") +\n                #         theme_light()\n                \n                ggplotly(p) %>% layout(showlegend = F)\n                ggplotly(p) %>% config(displayModeBar = F)\n          })\n        \n        output$table <- renderTable(as.data.frame(count(data_col[data_col$deployment_name == input$deployments1, ], \n                                                        sample_type_name)))\n        \n        output$testpie <- renderPlotly(\n                pie <- plot_ly(data_col_depl, values = ~Freq, labels = ~Country, type = \"pie\")\n        )\n}",
+    "created" : 1516726075376.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1071857451",
+    "id" : "BF43EE80",
+    "lastKnownWriteTime" : 1516733242,
+    "last_content_update" : 1516733242617,
+    "path" : "H:/GitHub/dashboard/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

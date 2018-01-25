@@ -1,0 +1,11 @@
+ID,sample_type_name,sample_type_var
+1,Open drains,d
+2,Raw produce,p
+3,Drinking water,dw
+4,Oceans,o
+5,Surface water,s
+6,Floodwater,f
+7,Public latrine swabs,l
+8,Particulate,pa
+9,Bathing water,bw
+10,Street food,sf
