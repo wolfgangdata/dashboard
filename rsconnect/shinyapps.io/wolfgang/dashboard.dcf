@@ -5,8 +5,8 @@ account: wolfgang
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 246316
-bundleId: 1189249
+bundleId: 1221558
 url: https://wolfgang.shinyapps.io/dashboard/
-when: 1516731613.55618
+when: 1518554300.64014
 asMultiple: FALSE
 asStatic: FALSE

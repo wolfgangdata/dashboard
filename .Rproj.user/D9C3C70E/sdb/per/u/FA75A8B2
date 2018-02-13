@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "\n\n\ndf <- as.data.frame(matrix(nrow=10, ncol=2))\n\ndfhist <- count(data_col[data_col$deployment_name == \"Cambodia\", ] , col_sample_type)\ndff <- data.frame(dff)\n\n#\ndfff <- as.data.frame(matrix(nrow = 10, ncol = 0))\ndfff$col_sample_type <- 1:10\n\ndfffff <- left_join(dfff, dff, by = \"col_sample_type\")\n\nggplot(data=dfffff, aes(x=col_sample_type, y=n)) + geom_bar(stat = \"identity\") +\n        scale_x_continuous(limits = c(1, 10))\n\n\n\nggplot(data=dff, aes(x=as.factor(col_sample_type), y=n)) + geom_bar(stat = \"identity\") +\n        scale_x_discrete()\n\n        ",
+    "created" : 1516910697760.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "2853024033",
+    "id" : "FA75A8B2",
+    "lastKnownWriteTime" : 3419473789575321445,
+    "last_content_update" : 1517251694290,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

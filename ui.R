@@ -8,42 +8,37 @@ library(plotly)
 dashboardPage(
         dashboardHeader(title = "SaniPath Dashboard"),
         dashboardSidebar(sidebarMenu(
-                menuItem("Overview", tabName = "overview", icon = icon("dashboard")),
-                menuItem("Samples", tabName = "tabcol", icon = icon("asterisk")),
-                menuItem("Lab", tabName = "tablab", icon = icon("asterisk"))
+                menuItem("Map", tabName = "tabmap", icon = icon("map-marker")),
+                menuItem("Samples", tabName = "tabcol", icon = icon("bar-chart")),
+                menuItem("Surveys", tabName = "tabsurv", icon = icon("bar-chart")),
+                menuItem("Drinking Water", tabName = "tabboil", icon = icon("pie-chart")),
+                menuItem("Latrines", tabName = "tablatrine", icon = icon("pie-chart"))
         )
         ),
         dashboardBody(
                 tabItems(
-                        # Tab 1 content
-                        tabItem(tabName = "overview",
+# **************************************************************************************************
+                        # Tab 1 map
+                        tabItem(tabName = "tabmap",
+                                HTML('<center><img src="sanipath_logo3.jpg" width="300" ></center>'),
                                 h2("Overview"),
+                                p("Here is an overview of the most recent SaniPath deployments."),
+                                p("MAP goes here")
+                                ),
+# **************************************************************************************************                        
+                        # Tab 2 sample collection
+                        tabItem(tabName = "tabcol",
+                                h2("Information about samples goes here"),
                                 fluidRow(
                                         box(title = "Deployment", status = "info", solidHeader = TRUE, 
                                             radioButtons("deployments", "Deployments",
                                                          choices = "")
-                                            ),
+                                        ),
                                         box(title = "Histogram", status = "primary", solidHeader = TRUE,
                                             collapsible = FALSE,
                                             plotlyOutput("hist", height = 250)
-                                            )
-                                        ),
-                                fluidRow(
-                                        box(title = "Slider", status = "warning", solidHeader = TRUE,
-                                            "Box content here", br(), "More box content",
-                                            sliderInput("slider", "Slider input:", 1, 100, 50)
-                                            ),
-                                        
-                                        box(title = "Histogram", status = "warning", solidHeader = TRUE,
-                                            collapsible = FALSE,
-                                            plotOutput("plot3", height = 250)
-                                            )
                                         )
                                 ),
-                        
-                        # Tab 2 content
-                        tabItem(tabName = "tabcol",
-                                h2("Here is the sample content"),
                                 fluidRow(
                                         box(title = "Test Pie", status = "info", solidHeader = TRUE,
                                             "Percentage of samples collected per deployment",
@@ -57,11 +52,21 @@ dashboardPage(
                                         )
                                 
                                 )),
-                        
-                        # Tab 3 content
-                        tabItem(tabName = "tablab",
-                                h2("Here is the lab content")
-                                )
+# **************************************************************************************************                        
+                        # Tab 3 suvey
+                        tabItem(tabName = "tabsurv",
+                                h2("Information about surveys goes here")
+                                ),
+# **************************************************************************************************                        
+                        # Tab 4 suvey
+                        tabItem(tabName = "tabboil",
+                                h2("Information about boiling drinking water goes here")
+                        ), 
+# **************************************************************************************************                        
+                        # Tab 5 suvey
+                        tabItem(tabName = "tablatrine",
+                                h2("Information about private latrine goes here")
+                        )
         ))
 )
 
