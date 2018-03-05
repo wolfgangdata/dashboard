@@ -1,5 +1,5 @@
-ID,Country,CODE,City,Year,Month
-0,Master,,Master,2017,10
-1,Cambodia,KHM,Siem Reap,2016,8
-2,Bangladesh,BGD,Dhaka,2017,3
-3,Ghana,GHA,Accra,2016,3
+ID,Country,CODE,City,Year,Month,long,lat
+0,Master,,Master,2017,10,,
+1,Cambodia,KHM,Siem Reap,2016,8,103.8448,13.3671
+2,Bangladesh,BGD,Dhaka,2017,3,90.4125,23.8103
+3,Ghana,GHA,Accra,2016,3,-0.187,5.6037
